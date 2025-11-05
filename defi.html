@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeFi - MIRZA ECOSYSTEM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/zH0cmJ4S/mirzalogo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0a1128;
+            --accent: #00f0f0;
+            --text: #ffffff;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: linear-gradient(135deg, #0a1128, #192d55);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: rgba(10, 17, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(0, 240, 240, 0.5);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 15px rgba(0, 240, 240, 0.5);
+            overflow: hidden;
+        }
+
+        .nav-logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-brand {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            color: var(--accent);
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(0, 240, 240, 0.5);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+            background: rgba(0, 240, 240, 0.1);
+        }
+
+        .nav-link.active {
+            color: var(--accent);
+            background: rgba(0, 240, 240, 0.15);
+            box-shadow: 0 0 10px rgba(0, 240, 240, 0.3);
+        }
+
+        /* Smart Slide Bar */
+        .slide-bar {
+            background: linear-gradient(90deg, rgba(0, 240, 240, 0.1), rgba(0, 240, 240, 0.2), rgba(0, 240, 240, 0.1));
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0, 240, 240, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide-content {
+            display: flex;
+            animation: slide 25s linear infinite;
+            white-space: nowrap;
+        }
+
+        .slide-item {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 0 3rem;
+            color: var(--accent);
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+        }
+
+        .slide-badge {
+            background: rgba(0, 240, 240, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid var(--accent);
+            font-size: 0.8rem;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .slide-bar:hover .slide-content {
+            animation-play-state: paused;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3rem;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #00f0f0;
+            box-shadow: 0 0 30px rgba(0, 240, 240, 0.7);
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #00f0f0;
+            text-shadow: 0 0 20px rgba(0, 240, 240, 0.8);
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .defi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .defi-card {
+            background: linear-gradient(135deg, rgba(25, 45, 85, 0.9), rgba(10, 17, 40, 0.9));
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .defi-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 240, 240, 0.3);
+        }
+
+        .defi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #0080ff);
+        }
+
+        .defi-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 20px rgba(0, 240, 240, 0.5);
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .defi-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .defi-title {
+            font-family: 'Orbitron', monospace;
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .defi-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .defi-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 240, 240, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .defi-features li:before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: rgba(0, 240, 240, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .mint-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #00f0f0, #0080ff);
+            color: #0a1128;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            margin: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 240, 240, 0.5);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .mint-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 240, 240, 0.7);
+        }
+
+        /* Footer */
+        .main-footer {
+            background: rgba(10, 17, 40, 0.95);
+            border-top: 2px solid rgba(0, 240, 240, 0.5);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: translateY(-3px);
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
+        }
+
+        .social-link:hover .social-icon {
+            filter: brightness(0) saturate(100%);
+        }
+
+        .ecosystem-text {
+            color: #00f0f0;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .mirza-text {
+            color: #00f0f0;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-family: 'Orbitron', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-menu {
+                gap: 0.5rem;
+                justify-content: center;
+            }
+            
+            .nav-link {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+            
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .defi-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .slide-item {
+                gap: 1rem;
+                padding: 0 1.5rem;
+                font-size: 0.8rem;
+            }
+
+            .slide-badge {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-img">
+                    <img src="https://i.ibb.co/zH0cmJ4S/mirzalogo.png" alt="MIRZA Logo">
+                </div>
+                <span class="nav-brand">MIRZA</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="mint.html" class="nav-link">Mint SBT</a></li>
+                <li><a href="defi.html" class="nav-link active">DeFi</a></li>
+                <li><a href="ecosystem.html" class="nav-link">Ecosystem</a></li>
+                <li><a href="roadmap.html" class="nav-link">Roadmap</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Smart Slide Bar -->
+    <div class="slide-bar">
+        <div class="slide-content">
+            <div class="slide-item">
+                <span class="slide-badge">NEW</span>
+                <span>🚀 MIRZA DeFi PLATFORM LIVE - EARN UP TO 15% APY 🚀</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">HOT</span>
+                <span>💰 $2.5M+ TOTAL VALUE LOCKED IN MIRZA DeFi 💰</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">UPDATE</span>
+                <span>⭐ NEW LIQUIDITY POOLS LAUNCHING SOON ⭐</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">ALERT</span>
+                <span>🎯 LIMITED TIME BONUS FOR EARLY STAKERS 🎯</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">TRENDING</span>
+                <span>🔥 15K+ ACTIVE USERS ON MIRZA DeFi PLATFORM 🔥</span>
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="slide-item">
+                <span class="slide-badge">NEW</span>
+                <span>🚀 MIRZA DeFi PLATFORM LIVE - EARN UP TO 15% APY 🚀</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">HOT</span>
+                <span>💰 $2.5M+ TOTAL VALUE LOCKED IN MIRZA DeFi 💰</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">UPDATE</span>
+                <span>⭐ NEW LIQUIDITY POOLS LAUNCHING SOON ⭐</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">ALERT</span>
+                <span>🎯 LIMITED TIME BONUS FOR EARLY STAKERS 🎯</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">TRENDING</span>
+                <span>🔥 15K+ ACTIVE USERS ON MIRZA DeFi PLATFORM 🔥</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- DeFi Page Content -->
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="https://i.ibb.co/zH0cmJ4S/mirzalogo.png" alt="MIRZA Logo">
+            </div>
+            <h1 class="title"><span class="ecosystem-text">MIRZA DeFi</span></h1>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">$2.5M+</div>
+                <div class="stat-label">TOTAL VALUE LOCKED</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">15K+</div>
+                <div class="stat-label">ACTIVE USERS</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">2.5%</div>
+                <div class="stat-label">APY AVERAGE</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">24/7</div>
+                <div class="stat-label">TRADING AVAILABLE</div>
+            </div>
+        </div>
+
+        <!-- DeFi Products Grid -->
+        <div class="defi-grid">
+            <!-- Staking Card -->
+            <div class="defi-card">
+                <div class="defi-logo">
+                    <img src="https://i.ibb.co/zH0cmJ4S/mirzalogo.png" alt="Staking">
+                </div>
+                <h2 class="defi-title">STAKING</h2>
+                <p>Earn passive income by staking your MIRZA tokens</p>
+                <ul class="defi-features">
+                    <li>Flexible staking periods</li>
+                    <li>Competitive APY returns</li>
+                    <li>Instant unstaking available</li>
+                    <li>No lock-up periods</li>
+                </ul>
+                <a href="mint.html" class="mint-button">
+                    START STAKING
+                </a>
+            </div>
+
+            <!-- Liquidity Pool Card -->
+            <div class="defi-card">
+                <div class="defi-logo">
+                    <img src="https://i.ibb.co/zH0cmJ4S/mirzalogo.png" alt="Liquidity Pools">
+                </div>
+                <h2 class="defi-title">LIQUIDITY POOLS</h2>
+                <p>Provide liquidity to earn trading fees</p>
+                <ul class="defi-features">
+                    <li>Multiple pool options</li>
+                    <li>Automated market making</li>
+                    <li>Low impermanent loss</li>
+                    <li>Real-time analytics</li>
+                </ul>
+                <a href="mint.html" class="mint-button">
+                    ADD LIQUIDITY
+                </a>
+            </div>
+
+            <!-- Yield Farming Card -->
+            <div class="defi-card">
+                <div class="defi-logo">
+                    <img src="https://i.ibb.co/zH0cmJ4S/mirzalogo.png" alt="Yield Farming">
+                </div>
+                <h2 class="defi-title">YIELD FARMING</h2>
+                <p>Maximize your returns through farming</p>
+                <ul class="defi-features">
+                    <li>Optimized farming strategies</li>
+                    <li>Compound interest</li>
+                    <li>Risk management tools</li>
+                    <li>Auto-compounding vaults</li>
+                </ul>
+                <a href="mint.html" class="mint-button">
+                    START FARMING
+                </a>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div style="text-align: center; margin: 4rem 0; padding: 3rem; background: linear-gradient(135deg, rgba(0, 240, 240, 0.1), rgba(0, 128, 255, 0.1)); border-radius: 20px; border: 2px solid var(--accent);">
+            <h2 style="font-family: 'Orbitron', monospace; color: var(--accent); font-size: 2.5rem; margin-bottom: 1rem;">READY TO START YOUR DEFI JOURNEY?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Join thousands of users already earning with MIRZA DeFi ecosystem</p>
+            <a href="mint.html" class="mint-button" style="font-size: 1.3rem; padding: 1.5rem 4rem;">
+                GET STARTED WITH MIRZA
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968823.png" alt="Twitter" class="social-icon">
+                    TWITTER
+                </a>
+                <a href="https://discord.gg/YmVjJxgq9g" target="_blank" class="social-link">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" class="social-icon">
+                    DISCORD
+                </a>
+                <a href="#" class="social-link">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968846.png" alt="Github" class="social-icon">
+                    GITHUB
+                </a>
+            </div>
+            <p>© 2023 <span class="ecosystem-text">MIRZA ECOSYSTEM</span> ALL RIGHTS RESERVED</p>
+            <p>BUILT FOR THE <span class="mirza-text">MIRZA</span> COMMUNITY</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set active navigation link
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

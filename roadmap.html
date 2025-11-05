@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap - MIRZA Ecosystem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/zH0cmJ4S/mirzalogo.png">
+    <style>
+        /* Same CSS as index.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0a1128;
+            --accent: #00f0f0;
+            --text: #ffffff;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: linear-gradient(135deg, #0a1128, #192d55);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: rgba(10, 17, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(0, 240, 240, 0.5);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 15px rgba(0, 240, 240, 0.5);
+            overflow: hidden;
+        }
+
+        .nav-logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-brand {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            color: var(--accent);
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(0, 240, 240, 0.5);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+            background: rgba(0, 240, 240, 0.1);
+        }
+
+        .nav-link.active {
+            color: var(--accent);
+            background: rgba(0, 240, 240, 0.15);
+            box-shadow: 0 0 10px rgba(0, 240, 240, 0.3);
+        }
+
+        /* Smart Slide Bar */
+        .slide-bar {
+            background: linear-gradient(90deg, rgba(0, 240, 240, 0.1), rgba(0, 240, 240, 0.2), rgba(0, 240, 240, 0.1));
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0, 240, 240, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide-content {
+            display: flex;
+            animation: slide 25s linear infinite;
+            white-space: nowrap;
+        }
+
+        .slide-item {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 0 3rem;
+            color: var(--accent);
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+        }
+
+        .slide-badge {
+            background: rgba(0, 240, 240, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid var(--accent);
+            font-size: 0.8rem;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(0, 240, 240, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 15px rgba(0, 240, 240, 0.6);
+            }
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .slide-bar:hover .slide-content {
+            animation-play-state: paused;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3rem;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #00f0f0;
+            box-shadow: 0 0 30px rgba(0, 240, 240, 0.7);
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #00f0f0;
+            text-shadow: 0 0 20px rgba(0, 240, 240, 0.8);
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .roadmap-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .roadmap-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--accent), #0080ff);
+            transform: translateX(-50%);
+        }
+
+        .roadmap-phase {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .phase-content {
+            width: 45%;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(25, 45, 85, 0.9), rgba(10, 17, 40, 0.9));
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 240, 240, 0.3);
+        }
+
+        .phase-left {
+            text-align: right;
+        }
+
+        .phase-right {
+            text-align: left;
+        }
+
+        .phase-marker {
+            width: 30px;
+            height: 30px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid var(--bg);
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+
+        .phase-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 15px rgba(0, 240, 240, 0.5);
+            margin-bottom: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .phase-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .phase-title {
+            font-family: 'Orbitron', monospace;
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .phase-date {
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .phase-features {
+            list-style: none;
+        }
+
+        .phase-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 240, 240, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .phase-features li:before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .current-phase {
+            transform: scale(1.05);
+        }
+
+        .current-phase .phase-content {
+            background: linear-gradient(135deg, rgba(0, 240, 240, 0.15), rgba(0, 128, 255, 0.15));
+            box-shadow: 0 15px 40px rgba(0, 240, 240, 0.5);
+        }
+
+        .mint-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, #00f0f0, #0080ff);
+            color: #0a1128;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            margin: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 240, 240, 0.5);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .mint-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 240, 240, 0.7);
+        }
+
+        .main-footer {
+            background: rgba(10, 17, 40, 0.95);
+            border-top: 2px solid rgba(0, 240, 240, 0.5);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: translateY(-3px);
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
+        }
+
+        .social-link:hover .social-icon {
+            filter: brightness(0) saturate(100%);
+        }
+
+        .ecosystem-text {
+            color: #00f0f0;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-menu {
+                gap: 0.5rem;
+                justify-content: center;
+            }
+            
+            .nav-link {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+            
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .roadmap-line {
+                left: 30px;
+            }
+            
+            .roadmap-phase {
+                flex-direction: column;
+                align-items: flex-start;
+                margin: 3rem 0;
+            }
+            
+            .phase-content {
+                width: 100%;
+                margin-left: 60px;
+                text-align: left;
+            }
+            
+            .phase-marker {
+                left: 30px;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .slide-item {
+                gap: 1rem;
+                padding: 0 1.5rem;
+                font-size: 0.8rem;
+            }
+
+            .slide-badge {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-img">
+                    <img src="https://i.ibb.co/zH0cmJ4S/mirzalogo.png" alt="MIRZA Logo">
+                </div>
+                <span class="nav-brand">MIRZA</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="mint.html" class="nav-link">Mint SBT</a></li>
+                <li><a href="defi.html" class="nav-link">DeFi</a></li>
+                <li><a href="ecosystem.html" class="nav-link">Ecosystem</a></li>
+                <li><a href="roadmap.html" class="nav-link active">Roadmap</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Smart Slide Bar -->
+    <div class="slide-bar">
+        <div class="slide-content">
+            <div class="slide-item">
+                <span class="slide-badge">NEW</span>
+                <span>🎉 MIRZA SBT CELEBRATION IS LIVE! JOIN THE FESTIVITY 🎉</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">HOT</span>
+                <span>🚀 LIMITED TIME OFFER - MINT YOUR SBT NOW! 🚀</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">UPDATE</span>
+                <span>⭐ EXCLUSIVE REWARDS FOR EARLY SUPPORTERS ⭐</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">ALERT</span>
+                <span>🎊 SPECIAL CELEBRATION BONUSES AVAILABLE 🎊</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">TRENDING</span>
+                <span>🔥 OVER 10,000 SBTs MINTED IN CELEBRATION! 🔥</span>
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="slide-item">
+                <span class="slide-badge">NEW</span>
+                <span>🎉 MIRZA SBT CELEBRATION IS LIVE! JOIN THE FESTIVITY 🎉</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">HOT</span>
+                <span>🚀 LIMITED TIME OFFER - MINT YOUR SBT NOW! 🚀</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">UPDATE</span>
+                <span>⭐ EXCLUSIVE REWARDS FOR EARLY SUPPORTERS ⭐</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">ALERT</span>
+                <span>🎊 SPECIAL CELEBRATION BONUSES AVAILABLE 🎊</span>
+            </div>
+            <div class="slide-item">
+                <span class="slide-badge">TRENDING</span>
+                <span>🔥 OVER 10,000 SBTs MINTED IN CELEBRATION! 🔥</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Roadmap Page Content -->
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="https://i.ibb.co/zH0cmJ4S/mirzalogo.png" alt="MIRZA Logo">
+            </div>
+            <h1 class="title"><span class="ecosystem-text">ROADMAP</span></h1>
+        </div>
+
+        <div class="roadmap-container">
+            <div class="roadmap-line"></div>
+            
+            <!-- Phase 1 -->
+            <div class="roadmap-phase">
+                <div class="phase-content phase-left">
+                    <div class="phase-logo">
+                        <img src="https://i.ibb.co/zH0cmJ4S/mirzalogo.png" alt="MIRZA Logo">
+                    </div>
+                    <h2 class="phase-title">Phase 1: Foundation</h2>
+                    <div class="phase-date">2026 Q4 - UPCOMING 🔮</div>
+                    <ul class="phase-features">
+                        <li>Smart Contract Development</li>
+                        <li>SBT Token Standard Implementation</li>
+                        <li>Website & Platform Launch</li>
+                        <li>Community Building</li>
+                        <li>Testnet Deployment</li>
+                    </ul>
+                </div>
+                <div class="phase-marker"></div>
+                <div style="width: 45%;"></div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="roadmap-phase">
+                <div style="width: 45%;"></div>
+                <div class="phase-marker"></div>
+                <div class="phase-content phase-right">
+                    <div class="phase-logo">
+                        <img src="https://i.ibb.co/zH0cmJ4S/mirzalogo.png" alt="MIRZA Logo">
+                    </div>
+                    <h2 class="phase-title">Phase 2: Growth</h2>
+                    <div class="phase-date">2027 Q1 - UPCOMING 🔮</div>
+                    <ul class="phase-features">
+                        <li>Mainnet Launch</li>
+                        <li>DeFi Platform Integration</li>
+                        <li>Mobile App Development</li>
+                        <li>Partnership Announcements</li>
+                        <li>Exchange Listings</li>
+                        <li>Advanced Staking Features</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="roadmap-phase">
+                <div class="phase-content phase-left">
+                    <div class="phase-logo">
+                        <img src="https://i.ibb.co/zH0cmJ4S/mirzalogo.png" alt="MIRZA Logo">
+                    </div>
+                    <h2 class="phase-title">Phase 3: Expansion</h2>
+                    <div class="phase-date">2027 Q2-Q3 - UPCOMING 🔮</div>
+                    <ul class="phase-features">
+                        <li>Cross-Chain Integration</li>
+                        <li>NFT Marketplace Launch</li>
+                        <li>Advanced Governance System</li>
+                        <li>Mobile Wallet Integration</li>
+                        <li>Developer SDK Release</li>
+                        <li>Global Marketing Campaign</li>
+                    </ul>
+                </div>
+                <div class="phase-marker"></div>
+                <div style="width: 45%;"></div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="roadmap-phase">
+                <div style="width: 45%;"></div>
+                <div class="phase-marker"></div>
+                <div class="phase-content phase-right">
+                    <div class="phase-logo">
+                        <img src="https://i.ibb.co/zH0cmJ4S/mirzalogo.png" alt="MIRZA Logo">
+                    </div>
+                    <h2 class="phase-title">Phase 4: Ecosystem</h2>
+                    <div class="phase-date">2027 Q4 - FUTURE 🌟</div>
+                    <ul class="phase-features">
+                        <li>DAO Implementation</li>
+                        <li>Enterprise Solutions</li>
+                        <li>Global Payment Integration</li>
+                        <li>AI-Powered Features</li>
+                        <li>Metaverse Integration</li>
+                        <li>Mass Adoption Initiatives</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div style="text-align: center; margin: 4rem 0; padding: 3rem; background: linear-gradient(135deg, rgba(0, 240, 240, 0.1), rgba(0, 128, 255, 0.1)); border-radius: 20px; border: 2px solid var(--accent);">
+            <h2 style="font-family: 'Orbitron', monospace; color: var(--accent); font-size: 2.5rem; margin-bottom: 1rem;">Join Our Journey</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Be part of the revolution in digital identity and decentralized finance</p>
+            <a href="mint.html" class="mint-button" style="font-size: 1.3rem; padding: 1.5rem 4rem;">
+                START WITH MIRZA
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968823.png" alt="Twitter" class="social-icon">
+                    TWITTER
+                </a>
+                <a href="https://discord.gg/YmVjJxgq9g" target="_blank" class="social-link">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" class="social-icon">
+                    DISCORD
+                </a>
+                <a href="#" class="social-link">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968846.png" alt="Github" class="social-icon">
+                    GITHUB
+                </a>
+            </div>
+            <p>© 2023 <span class="ecosystem-text">MIRZA ECOSYSTEM</span> ALL RIGHTS RESERVED</p>
+            <p>BUILT FOR THE <span class="ecosystem-text">MIRZA</span> COMMUNITY</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set active navigation link
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
